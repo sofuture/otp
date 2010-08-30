@@ -37,7 +37,7 @@
 
 %% Standard interface.
 -export([new/0,is_key/2,to_list/1,from_list/1,size/1]).
--export([fetch/2,find/2,fetch_keys/1,erase/2]).
+-export([fetch/2,fetch/3,find/2,fetch_keys/1,erase/2]).
 -export([store/3,append/3,append_list/3,update/3,update/4,update_counter/3]).
 -export([fold/3,map/2,filter/2,merge/3]).
 
@@ -113,6 +113,14 @@ fetch(Key, D) ->
     try fetch_val(Key, Bkt)
     catch
 	badarg -> erlang:error(badarg, [Key, D])
+    end.
+
+-spec fetch(term(), term(), dict()) -> term().
+
+fetch(Key, Default, D) ->
+    case find(Key, D) of
+    {ok, Val} -> Val;
+    error -> Default
     end.
 
 fetch_val(K, [?kv(K,Val)|_]) -> Val;
