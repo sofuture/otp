@@ -102,6 +102,20 @@ dictionary()
       </desc>
     </func>
     <func>
+      <name>fetch(Key, Default, Dict) -> Value</name>
+      <fsummary>Look-up values in a dictionary</fsummary>
+      <type>
+        <v>Key = Default = Value = term()</v>
+        <v>Dict = dictionary()</v>
+      </type>
+      <desc>
+        <p>This function returns the value associated with <c>Key</c>
+         in the dictionary <c>Dict</c>. <c>fetch</c> will return
+         <c>Default</c> if the <c>Key</c> is not present in the
+         dictionary</p>
+      </desc>
+    </func>
+    <func>
       <name>fetch_keys(Dict) -> Keys</name>
       <fsummary>Return all keys in a dictionary</fsummary>
       <type>
